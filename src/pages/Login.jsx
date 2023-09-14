@@ -40,7 +40,7 @@ const Login = () => {
                     type='email'
                     name='email'
                     id='email'
-                    className='mt-2 h-9 border border-gray-300 rounded outline-none px-3 text-black focus:border-gray-400'
+                    className='mt-2 h-9 border border-gray-300 rounded outline-none px-3 text-black focus:border-gray-400 w-full'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     disabled={disabled}
@@ -52,7 +52,7 @@ const Login = () => {
                     type='password'
                     name='password'
                     id='password'
-                    className='mt-2 h-9 border border-gray-300 rounded outline-none px-3 text-black focus:border-gray-400'
+                    className='mt-2 h-9 border border-gray-300 rounded outline-none px-3 text-black focus:border-gray-400 w-full'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     disabled={disabled}
@@ -69,6 +69,7 @@ const Login = () => {
             </li>
             <li className='text-sm text-center text-gray-500'>
                 {locale.login.signup}
+                {` `}
                 <Link
                     to='/register'
                     className='text-blue-400 hover:underline'

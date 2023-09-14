@@ -35,7 +35,7 @@ const Register = () => {
                     type='email'
                     name='email'
                     id='email'
-                    className='mt-2 h-9 border border-gray-300 rounded outline-none px-3 text-black focus:border-gray-400'
+                    className='mt-2 h-9 border border-gray-300 rounded outline-none px-3 text-black focus:border-gray-400 w-full'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     disabled={disabled}
@@ -47,7 +47,7 @@ const Register = () => {
                     type='text'
                     name='fullname'
                     id='fullname'
-                    className='mt-2 h-9 border border-gray-300 rounded outline-none px-3 text-black focus:border-gray-400'
+                    className='mt-2 h-9 border border-gray-300 rounded outline-none px-3 text-black focus:border-gray-400 w-full'
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     disabled={disabled}
@@ -60,7 +60,7 @@ const Register = () => {
                         type={hide ? 'password' : 'text'}
                         name='password'
                         id='password'
-                        className='h-9 border w-full border-gray-300 rounded outline-none px-3 text-black focus:border-gray-400'
+                        className='h-9 border border-gray-300 rounded outline-none px-3 text-black focus:border-gray-400 w-full'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         disabled={disabled}
@@ -69,7 +69,7 @@ const Register = () => {
                         {hide ? <Eye onClick={() => setHide(false)} /> : <EyeOff onClick={() => setHide(true)} />}
                     </span>
                 </label>
-                <div className='mt-2 text-gray-400'>{locale.register.password_longer}</div>
+                <div className='mt-2 text-gray-400 max-[420px]:text-[11px]'>{locale.register.password_longer}</div>
             </li>
             <li>
                 <button
@@ -82,6 +82,7 @@ const Register = () => {
             </li>
             <li className='text-sm text-center text-gray-500'>
                 {locale.register.signin}
+                {` `}
                 <Link
                     to='/login'
                     className='text-blue-400 hover:underline'
