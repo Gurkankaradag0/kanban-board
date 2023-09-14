@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+    @apply h-full bg-backdrop text-white font-['Poppins',_sans-serif] scroller antialiased;
+}
+
+#root {
+    @apply flex flex-col justify-center items-center w-full;
+}
+
+.scroller {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(55, 65, 81) rgb(31, 41, 55);
+}
+
+.scroller::-webkit-scrollbar {
+    @apply w-6 bg-gray-800;
+}
+
+.scroller::-webkit-scrollbar-thumb {
+    @apply bg-gray-700 border-8 border-y-0 border-r-0 border-solid border-gray-800;
+}
+
+.scroller::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-600;
+}
