@@ -6,6 +6,7 @@ import { invertColor } from '@/utils/helpers'
 import { deleteUserBoard, editUserBoard } from '@/services/api'
 import { useCookies } from 'react-cookie'
 import Tasks from './Tasks'
+import HexColor from './HexColor'
 
 const Board = ({ board }) => {
     const [boardTitle, setBoardTitle] = useState(board.title)
@@ -51,25 +52,10 @@ const Board = ({ board }) => {
                     }`}
                 />
                 <nav className='flex items-center gap-x-1'>
-                    <div
-                        className='relative group z-10'
+                    <HexColor
+                        board={board}
                         onBlurCapture={editBoardColor}
-                    >
-                        <button className='w-7 h-7 rounded text-icon hover:bg-hover group-focus-within:bg-hover flex items-center justify-center'>
-                            <CircleIcon
-                                fill={board.color}
-                                size={20}
-                                strokeWidth={0.5}
-                                color={invertColor(board.color)}
-                            />
-                        </button>
-                        <div className='absolute top-full right-0 translate-y-1 shadow-box rounded opacity-0 invisible transition-all group-focus-within:opacity-100 group-focus-within:visible'>
-                            <HexColorPicker
-                                color={board.color}
-                                onChange={(c) => setColor(board._id, c)}
-                            />
-                        </div>
-                    </div>
+                    />
                     <button
                         onClick={delBoard}
                         className='w-7 h-7 rounded text-red-600 hover:bg-hover flex items-center justify-center'

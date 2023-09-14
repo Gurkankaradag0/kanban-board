@@ -2,10 +2,16 @@ import { deleteUser } from '@/services/api'
 import { useLocale } from '@/store/hooks/intl'
 import { useUser } from '@/store/hooks/user'
 import { LogOutIcon, TrashIcon, ChevronDownIcon } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { useNavigate } from 'react-router-dom'
+import { isMobile } from 'react-device-detect'
+import classNames from 'classnames'
 
 const User = () => {
+    const [open, setOpen] = useState(false)
+    const ref = useRef()
+
     const user = useUser()
     const locale = useLocale()
     const navigate = useNavigate()
@@ -22,16 +28,40 @@ const User = () => {
         navigate('/login')
     }
 
+    const onClickHandle = (e) => {
+        if (!e.composedPath().includes(ref.current)) setOpen(false)
+    }
+
+    useEffect(() => {
+        isMobile && document.body.addEventListener('click', onClickHandle)
+        return () => {
+            isMobile && document.body.removeEventListener('click', onClickHandle)
+        }
+    }, [])
+
     return (
-        <div className='absolute top-1/2 -translate-y-1/2 right-2 group z-10'>
-            <button className='flex items-center justify-center gap-1 text-sm'>
+        <div
+            className='absolute top-1/2 -translate-y-1/2 right-2 group z-10'
+            ref={ref}
+        >
+            <button
+                className='flex items-center justify-center gap-1 text-sm'
+                onClick={() => isMobile && setOpen(true)}
+            >
                 {user.full_name}
                 <ChevronDownIcon
                     size={16}
                     strokeWidth={3}
                 />
             </button>
-            <nav className='absolute top-full right-0 translate-y-1 shadow-box rounded bg-white py-1 min-w-[9rem] opacity-0 invisible transition-all group-focus-within:opacity-100 group-focus-within:visible'>
+            <nav
+                className={classNames({
+                    'absolute top-full right-0 translate-y-1 shadow-box rounded bg-white py-1 min-w-[9rem] transition-all': true,
+                    'opacity-0 invisible group-focus-within:opacity-100 group-focus-within:visible': !isMobile,
+                    'opacity-100 visible': isMobile && open,
+                    'opacity-0 invisible': isMobile && !open
+                })}
+            >
                 <button
                     className='h-9 flex items-center px-2 font-medium text-xs transition-all text-gray-800 hover:bg-gray-300 w-full'
                     onClick={logOut}

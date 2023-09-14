@@ -6,6 +6,8 @@ import { Trash } from 'lucide-react'
 import Textarea from './Textarea'
 import { useCookies } from 'react-cookie'
 import { deleteUserTask, editUserTask } from '@/services/api'
+import classNames from 'classnames'
+import { isMobile } from 'react-device-detect'
 
 const Task = ({ task, index, board }) => {
     const [taskTitle, setTaskTitle] = useState(task.task)
@@ -54,10 +56,18 @@ const Task = ({ task, index, board }) => {
                         onKeyDown={({ key }) => key === 'Escape' && setDisabled(true)}
                     />
 
-                    <div className='absolute opacity-0 group-hover:opacity-100 top-2 right-2 z-10'>
+                    <div
+                        className={classNames({
+                            'absolute top-2 right-2 z-10': true,
+                            'opacity-0 group-hover:opacity-100': !isMobile
+                        })}
+                    >
                         <button
                             onClick={() => delTask(index)}
-                            className='w-8 h-8 flex items-center justify-center text-red-600 shadow opacity-0 transition-all group-hover:opacity-100 border border-light rounded-md z-[1] bg-white'
+                            className={classNames({
+                                'w-8 h-8 flex items-center justify-center text-red-600 shadow transition-all border border-light rounded-md z-[1] bg-white': true,
+                                'opacity-0 group-hover:opacity-100': !isMobile
+                            })}
                         >
                             <Trash size={20} />
                         </button>
