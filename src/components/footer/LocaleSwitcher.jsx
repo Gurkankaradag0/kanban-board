@@ -20,7 +20,7 @@ const LocaleSwitcher = () => {
                 {Object.keys(locales).map((locale, index) => (
                     <span
                         key={index}
-                        onClick={() => updateIntl(locale) && close()}
+                        onClick={() => updateIntl(locale)}
                         className={`h-9 flex items-center px-2 font-medium text-xs transition-all text-gray-800 hover:bg-gray-300 w-full select-none cursor-pointer ${
                             locale === currentLocale && 'bg-gray-300'
                         }`}
