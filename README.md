@@ -1,5 +1,7 @@
 # Kanban Board
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d55637e1-0603-4330-a127-b15747c57ebc/deploy-status)](https://gk-kanban-board.netlify.app)
+
 ## Setup
 
 -   Clone the repository:
