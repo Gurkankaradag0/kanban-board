@@ -15,11 +15,31 @@
     npm install or yarn install or pnpm install
     ```
 
+-   Create your own .env file based on the .env.example file.
+
 ## Run Project
 
 ```python
 npm dev or yarn dev or pnpm dev
 ```
+
+## Features
+
+-   Login and Register Pages.
+-   Multi-language support.
+-   [API](https://github.com/Gurkankaradag0/kanban-board-api) integration.
+-   Adding and deleting boards and tasks.
+-   Special color assignment to boards.
+-   Moving tasks between themselves or between boards.
+
+## Technologies
+
+-   [ViteJS](https://vitejs.dev/)
+-   [ReactJS](https://react.dev/)
+-   [TailwindCSS](https://tailwindcss.com/)
+-   [Redux Toolkit](https://redux-toolkit.js.org/)
+-   [Axios](https://axios-http.com/)
+-   [React Router](https://reactrouter.com/)
 
 ## Developed By
 
